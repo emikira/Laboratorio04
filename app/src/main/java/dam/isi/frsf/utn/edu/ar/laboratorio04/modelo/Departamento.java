@@ -103,8 +103,31 @@ public class Departamento implements Serializable {
         this.reservas = reservas;
     }
 
+    public Boolean getNoFumador() {
+        return noFumador;
+    }
 
-        public Integer getCantidadHabitaciones() {
+    public void setNoFumador(Boolean noFumador) {
+        this.noFumador = noFumador;
+    }
+
+    public String getCorreoElectronico() {
+        return correoElectronico;
+    }
+
+    public void setCorreoElectronico(String correoElectronico) {
+        this.correoElectronico = correoElectronico;
+    }
+
+    public static Boolean getFlagInicializado() {
+        return _FLAG_INICIALIZADO;
+    }
+
+    public static void setFlagInicializado(Boolean FlagInicializado) {
+        _FLAG_INICIALIZADO = FlagInicializado;
+    }
+
+    public Integer getCantidadHabitaciones() {
             return cantidadHabitaciones;
         }
 

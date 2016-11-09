@@ -45,6 +45,21 @@ public class BuscarDepartamentosTask extends AsyncTask<FormBusqueda,Integer,List
         Ciudad ciudadBuscada = busqueda[0].getCiudad();
         // TODO implementar: buscar todos los departamentos del sistema e ir chequeando las condiciones 1 a 1.
         // si cumplen las condiciones agregarlo a los resultados.
+
+        FormBusqueda actual = busqueda[0];
+        for(Departamento dpto : todos){
+            if(!actual.getPermiteFumar() == dpto.getNoFumador()
+            &&  actual.getCiudad() == dpto.getCiudad()
+            &&  actual.getPrecioMaximo()>=dpto.getPrecio()
+            &&  actual.getPrecioMinimo()<=dpto.getPrecio()){
+
+                resultado.add(dpto);
+                contador++;
+                publishProgress(contador);
+            }
+
+        }
+
         return resultado;
     }
 }
