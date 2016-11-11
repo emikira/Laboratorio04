@@ -28,7 +28,7 @@ public class Departamento implements Serializable {
 
     public Departamento(){
         Random r = new Random();
-        this.noFumador = r.nextInt()%2==0;
+        this.noFumador = (r.nextInt()%2)==0;
         this.correoElectronico = "hotel_"+(10+r.nextInt(99))+"@mail.com";
         this.precio =r.nextDouble()*(100+r.nextInt(200));
         this.descuento=r.nextDouble()*0.5;
@@ -45,6 +45,10 @@ public class Departamento implements Serializable {
     public Departamento(Integer id){
         this();
         this.id=id;
+    }
+
+    public boolean getFumador (){
+        return noFumador;
     }
 
     public Integer getId() {

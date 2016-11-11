@@ -77,13 +77,17 @@ public class MainActivity extends AppCompatActivity
 
         btnBuscar = (Button) findViewById(R.id.btnBuscar);
         btnBuscar.setOnClickListener(btnBusarListener);
+
+        skPrecioMin.setProgress(1);
+        skPrecioMax.setProgress(1);
     }
 
     private View.OnClickListener btnBusarListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent i = new Intent(MainActivity.this,ListaDepartamentosActivity.class);
-            frmBusq.setPermiteFumar(swFumadores.isSelected());
+            frmBusq.setHuespedes(Integer.parseInt(txtHuespedes.getText().toString()));
+            frmBusq.setPermiteFumar(swFumadores.isChecked());
             i.putExtra("esBusqueda",true);
             i.putExtra("frmBusqueda",frmBusq);
             startActivity(i);
