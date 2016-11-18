@@ -5,24 +5,28 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import dam.isi.frsf.utn.edu.ar.laboratorio04.utils.BuscarDepartamentosTask;
 import dam.isi.frsf.utn.edu.ar.laboratorio04.modelo.Departamento;
 import dam.isi.frsf.utn.edu.ar.laboratorio04.utils.BusquedaFinalizadaListener;
 import dam.isi.frsf.utn.edu.ar.laboratorio04.utils.FormBusqueda;
 
-public class ListaDepartamentosActivity extends AppCompatActivity implements BusquedaFinalizadaListener<Departamento> {
+public class ListaDepartamentosActivity extends AppCompatActivity implements BusquedaFinalizadaListener<Departamento>{
 
     private TextView tvEstadoBusqueda;
     private ListView listaAlojamientos;
     private DepartamentoAdapter departamentosAdapter;
     private List<Departamento> lista;
-
+    private Boolean habilitada;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,31 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
         lista= new ArrayList<>();
         listaAlojamientos= (ListView ) findViewById(R.id.listaAlojamientos);
         tvEstadoBusqueda = (TextView) findViewById(R.id.estadoBusqueda);
+        listaAlojamientos.setLongClickable(true);
+        listaAlojamientos.setOnItemLongClickListener(
+                new AdapterView.OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                        Random r = new Random();
+                        habilitada = (r.nextInt()%2)==0;
+                        if(habilitada){
+                            Toast.makeText(ListaDepartamentosActivity.this,"Reserva realizada",Toast.LENGTH_SHORT).show();
+                            Intent i2 = new Intent(ListaDepartamentosActivity.this, AltaReservaActivity.class);
+                            Bundle bundle = new Bundle();
+                            bundle.putSerializable("value", departamentosAdapter.getItem(position));
+                            i2.putExtra("desdeLista",true);
+                            i2.putExtras(bundle);
+                            startActivity(i2);
+                        }
+                        else{
+                            Toast.makeText(ListaDepartamentosActivity.this,"Su reserva esta en lista de espera",Toast.LENGTH_SHORT).show();
+                        }
+
+                        return false;
+                    }
+
+                });
 
     }
 
@@ -70,5 +99,6 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
     public void busquedaActualizada(String msg) {
         tvEstadoBusqueda.setText(" Buscando..."+msg);
     }
+
 
 }

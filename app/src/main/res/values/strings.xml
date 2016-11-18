@@ -7,4 +7,6 @@
 
     <string name="action_settings">Configuracion</string>
     <string name="not_found">No se encontraron departamentos</string>
+    <string name="sus_reservas">Estas son sus reservas</string>
+    <string name="sin_reservas">No se encontraron reservas</string>
 </resources>

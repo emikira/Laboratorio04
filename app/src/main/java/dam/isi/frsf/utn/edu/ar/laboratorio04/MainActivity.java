@@ -24,9 +24,12 @@ import android.widget.Spinner;
 import android.widget.Switch;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import dam.isi.frsf.utn.edu.ar.laboratorio04.modelo.Ciudad;
+import dam.isi.frsf.utn.edu.ar.laboratorio04.modelo.Departamento;
 import dam.isi.frsf.utn.edu.ar.laboratorio04.utils.FormBusqueda;
 
 public class MainActivity extends AppCompatActivity
@@ -42,6 +45,8 @@ public class MainActivity extends AppCompatActivity
     private EditText txtHuespedes;
     private Switch swFumadores;
     private FormBusqueda frmBusq;
+    private ArrayList<Departamento> reservas = new ArrayList<Departamento>() {
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -76,13 +81,13 @@ public class MainActivity extends AppCompatActivity
         tvPrecioMaximo= (TextView ) findViewById(R.id.txtPrecioMax);
 
         btnBuscar = (Button) findViewById(R.id.btnBuscar);
-        btnBuscar.setOnClickListener(btnBusarListener);
+        btnBuscar.setOnClickListener(btnBuscarListener);
 
         skPrecioMin.setProgress(1);
         skPrecioMax.setProgress(1);
     }
 
-    private View.OnClickListener btnBusarListener = new View.OnClickListener() {
+    private View.OnClickListener btnBuscarListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent i = new Intent(MainActivity.this,ListaDepartamentosActivity.class);
@@ -179,6 +184,7 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_reservas:
                 Intent i2 = new Intent(MainActivity.this, AltaReservaActivity.class);
+                i2.putExtra("desdeLista",false);
                 startActivity(i2);
                 break;
             case R.id.nav_destinos:
