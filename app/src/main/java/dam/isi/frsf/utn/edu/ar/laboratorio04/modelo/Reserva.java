@@ -1,5 +1,7 @@
 package dam.isi.frsf.utn.edu.ar.laboratorio04.modelo;
 
+import android.text.format.DateUtils;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -82,6 +84,17 @@ public class Reserva implements Serializable {
 
     public void setConfirmada(Boolean confirmada) {
         this.confirmada = confirmada;
+    }
+
+    @Override
+    public String toString() {
+
+        return "Reserva " + "\n" +
+                "Departamento " + departamento.getId() + "\n" +
+                "Ciudad " + departamento.getCiudad().toString() + "\n" +
+                "Precio=$" + precio.intValue() +"\n" +
+                "Fecha Inicio: " + fechaInicio.toString() +"\n" +
+                "Fecha Fin: " + fechaFin.toString();
     }
 
 }

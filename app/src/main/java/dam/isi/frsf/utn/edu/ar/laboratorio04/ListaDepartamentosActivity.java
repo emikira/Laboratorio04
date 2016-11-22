@@ -40,20 +40,14 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-                        Random r = new Random();
-                        habilitada = (r.nextInt()%2)==0;
-                        if(habilitada){
-                            Toast.makeText(ListaDepartamentosActivity.this,"Reserva realizada",Toast.LENGTH_SHORT).show();
+
+                            Toast.makeText(ListaDepartamentosActivity.this,"Su reserva esta a la espera de ser confirmada",Toast.LENGTH_SHORT).show();
                             Intent i2 = new Intent(ListaDepartamentosActivity.this, AltaReservaActivity.class);
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("value", departamentosAdapter.getItem(position));
-                            i2.putExtra("desdeLista",true);
                             i2.putExtras(bundle);
                             startActivity(i2);
-                        }
-                        else{
-                            Toast.makeText(ListaDepartamentosActivity.this,"Su reserva esta en lista de espera",Toast.LENGTH_SHORT).show();
-                        }
+
 
                         return false;
                     }
@@ -76,6 +70,7 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
             tvEstadoBusqueda.setVisibility(View.GONE);
             lista=Departamento.getAlojamientosDisponibles();
         }
+        Toast.makeText(this, "Mantenga presionado sobre una habitacion para reservar", Toast.LENGTH_LONG);
         departamentosAdapter = new DepartamentoAdapter(ListaDepartamentosActivity.this,lista);
         listaAlojamientos.setAdapter(departamentosAdapter);
     }
@@ -88,6 +83,7 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
             departamentosAdapter.notifyDataSetChanged();
             tvEstadoBusqueda.setVisibility(View.GONE);
             listaAlojamientos.setVisibility(View.VISIBLE);
+
         }else{
             departamentosAdapter.clear();
             tvEstadoBusqueda.setVisibility(View.VISIBLE);

@@ -30,6 +30,7 @@ import java.util.List;
 
 import dam.isi.frsf.utn.edu.ar.laboratorio04.modelo.Ciudad;
 import dam.isi.frsf.utn.edu.ar.laboratorio04.modelo.Departamento;
+import dam.isi.frsf.utn.edu.ar.laboratorio04.modelo.Usuario;
 import dam.isi.frsf.utn.edu.ar.laboratorio04.utils.FormBusqueda;
 
 public class MainActivity extends AppCompatActivity
@@ -183,8 +184,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_perfil:
                 break;
             case R.id.nav_reservas:
-                Intent i2 = new Intent(MainActivity.this, AltaReservaActivity.class);
-                i2.putExtra("desdeLista",false);
+                Intent i2 = new Intent(MainActivity.this, ListaReservasActivity.class);
                 startActivity(i2);
                 break;
             case R.id.nav_destinos:
