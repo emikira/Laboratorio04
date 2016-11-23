@@ -40,8 +40,6 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
                     @Override
                     public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-
-                            Toast.makeText(ListaDepartamentosActivity.this,"Su reserva esta a la espera de ser confirmada",Toast.LENGTH_SHORT).show();
                             Intent i2 = new Intent(ListaDepartamentosActivity.this, AltaReservaActivity.class);
                             Bundle bundle = new Bundle();
                             bundle.putSerializable("value", departamentosAdapter.getItem(position));
@@ -70,7 +68,7 @@ public class ListaDepartamentosActivity extends AppCompatActivity implements Bus
             tvEstadoBusqueda.setVisibility(View.GONE);
             lista=Departamento.getAlojamientosDisponibles();
         }
-        Toast.makeText(this, "Mantenga presionado sobre una habitacion para reservar", Toast.LENGTH_LONG);
+        Toast.makeText(this, "Mantenga presionado sobre una habitacion para reservar", Toast.LENGTH_LONG).show();
         departamentosAdapter = new DepartamentoAdapter(ListaDepartamentosActivity.this,lista);
         listaAlojamientos.setAdapter(departamentosAdapter);
     }

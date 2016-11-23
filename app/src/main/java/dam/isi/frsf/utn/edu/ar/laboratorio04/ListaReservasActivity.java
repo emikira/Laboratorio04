@@ -37,7 +37,6 @@ public class ListaReservasActivity extends AppCompatActivity {
         if(u.getReservas()==null || u.getReservas().isEmpty()){
             reservas.setVisibility(View.GONE);
             sinRes.setVisibility(View.VISIBLE);
-            Toast.makeText(this, "No hay reservas para mostrar", Toast.LENGTH_SHORT).show();
         }
         else{
             ArrayAdapter<String> adapter = new ArrayAdapter<>(ListaReservasActivity.this, android.R.layout.simple_list_item_1,u.getReservas());

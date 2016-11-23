@@ -10,6 +10,7 @@ import java.util.List;
 public class Usuario implements Serializable {
 
     private static Usuario singletonInstance = null;
+    private String nombre;
     private Integer id;
     private String correo;
     private List<Reserva> reservas;
@@ -48,6 +49,8 @@ public class Usuario implements Serializable {
 
         List<String> reservasSt = new ArrayList<String>();
 
+        if (reservas==null) return null;
+
         for(Reserva i : reservas){
             String s = i.toString();
             reservasSt.add(s);
@@ -72,5 +75,13 @@ public class Usuario implements Serializable {
 
     public void setPuntosSuperPremio(Integer puntosSuperPremio) {
         this.puntosSuperPremio = puntosSuperPremio;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getNombre() {
+        return nombre;
     }
 }

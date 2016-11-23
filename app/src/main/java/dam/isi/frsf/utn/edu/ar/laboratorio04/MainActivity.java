@@ -182,6 +182,8 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_ofertas:
                 break;
             case R.id.nav_perfil:
+                Intent i3 = new Intent(MainActivity.this, ConfigUsuarioActivity.class);
+                startActivity(i3);
                 break;
             case R.id.nav_reservas:
                 Intent i2 = new Intent(MainActivity.this, ListaReservasActivity.class);

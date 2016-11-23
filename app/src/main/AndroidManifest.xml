@@ -21,6 +21,22 @@
         <activity android:name=".ListaDepartamentosActivity" />
         <activity android:name=".AltaReservaActivity" />
         <activity android:name=".ListaReservasActivity" />
+        <activity android:name=".ConfigUsuarioActivity" />
+        <receiver
+            android:name=".utils.AlarmReceiver">
+            <intent-filter>
+                <action android:name="dam.isi.frsf.utn.edu.ar.laboratorio04.Notificacion"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".utils.DivisibleTresReceiver"
+            android:enabled="true"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="dam.isi.frsf.utn.edu.ar.laboratorio04.ListaReservasActivity.Alarma"/>
+            </intent-filter>
+        </receiver>
+
 
     </application>
 
